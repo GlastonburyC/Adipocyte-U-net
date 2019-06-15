@@ -4,7 +4,7 @@ The Adipocyte U-net is a deep U-net architecture trained to segment Adipocytes f
 
 ![alt text](overview.png)
 
-training images for classifying adipocyte containing tiles here [here](https://drive.google.com/open?id=1hsmMGTQSOvicUr50fiCol_Gr5z8U0koC)
+training images for classifying adipocyte containing tiles [here](https://drive.google.com/open?id=1hsmMGTQSOvicUr50fiCol_Gr5z8U0koC)
 
 trained InceptionV3 adipocyte tile classifier [weights here.](https://drive.google.com/open?id=1dGZ1amjkRfRzSO9etWwtsadylG6wGvF0)
 
