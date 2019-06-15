@@ -1,8 +1,5 @@
 # Adipocyte-U-net
-< in progress> - Will contain:
 
-* All notebooks
-* models
-* model weights
-* data
-* GWAS summary statistics.
+
+
+trained InceptionV3 adipocyte tile classifier weights: https://drive.google.com/open?id=1dGZ1amjkRfRzSO9etWwtsadylG6wGvF0
