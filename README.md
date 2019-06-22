@@ -10,5 +10,6 @@ trained InceptionV3 adipocyte tile classifier [weights here.](https://drive.goog
 
 U-net weights are in /checkpoints/ folder.
 
-All data are released here.
+All annotations, training and validation images splits [here](https://drive.google.com/open?id=1MDY_CYcLSKbCrjMBvGZ5sFaqh5rRmrRk)
 
+All montage images and numpy arrays [here](https://drive.google.com/open?id=1qCb13kFdN3mxukcnz7IwfarfaZU3ygsr)
