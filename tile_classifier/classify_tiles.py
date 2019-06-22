@@ -69,9 +69,15 @@ for idx in range(nbr_augmentation):
     test_image_list = test_generator.filenames
     print('Begin to predict for testing data ...')
     if idx == 0:
-        predictions = InceptionV3_model.predict_generator(test_generator, 2414950,use_multiprocessing=True,workers=40)
+        predictions = InceptionV3_model.predict_generator(test_generator, 
+                                                          2414950,
+                                                          use_multiprocessing=True,
+                                                          workers=40)
     else:
-        predictions += InceptionV3_model.predict_generator(test_generator, 2414950,use_multiprocessing=True, workers=40)
+        predictions += InceptionV3_model.predict_generator(test_generator, 
+                                                           2414950,
+                                                           use_multiprocessing=True, 
+                                                           workers=40)
 
 
 predictions /= nbr_augmentation
