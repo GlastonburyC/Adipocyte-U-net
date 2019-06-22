@@ -3,7 +3,9 @@ import numpy as np
 np.random.seed(865)
 
 from keras.models import Model
-from keras.layers import Input, merge, Conv2D, MaxPooling2D, UpSampling2D, Dropout, concatenate, Conv2DTranspose, Lambda, Reshape, BatchNormalization
+from keras.layers import (Input, merge, Conv2D, MaxPooling2D, 
+                          UpSampling2D, Dropout, concatenate,
+                          Conv2DTranspose, Lambda, Reshape, BatchNormalization)
 from keras.optimizers import Adam
 from keras.callbacks import ModelCheckpoint, ReduceLROnPlateau, EarlyStopping
 from keras.utils.np_utils import to_categorical
@@ -18,7 +20,10 @@ import os
 import sys
 sys.path.append('.')
 from src.utils.runtime import funcname, gpu_selection
-from src.utils.model import dice_coef, dice_coef_loss, KerasHistoryPlotCallback, KerasSimpleLoggerCallback, jaccard_coef, jaccard_coef_int, weighted_bce_dice_loss, weighted_dice_loss, weighted_bce_loss,weighted_dice_coeff
+from src.utils.model import (dice_coef, dice_coef_loss, KerasHistoryPlotCallback, 
+                             KerasSimpleLoggerCallback, jaccard_coef, jaccard_coef_int, 
+                             weighted_bce_dice_loss, weighted_dice_loss, 
+                             weighted_bce_loss, weighted_dice_coeff)
 from src.utils.data import random_transforms
 from src.utils.isbi_utils import isbi_get_data_montage
 
@@ -169,21 +174,47 @@ class UNet():
 
         logger = logging.getLogger(funcname())
 
-        gen_trn = self.batch_gen_trn(imgs=self.imgs_trn,imgs2=self.imgs_trn2, imgs3=self.imgs_trn3, imgs4=self.imgs_trn4,
-             msks=self.msks_trn,msks2=self.msks_trn2, msks3=self.msks_trn3, msks4=self.msks_trn4, batch_size=self.config[
-            'batch_size'], transform=self.config['transform_train'],val=False)
-        gen_val = self.batch_gen_trn(imgs=self.imgs_val,imgs2=self.imgs_val2, imgs3=self.imgs_val3, imgs4=self.imgs_val4,
-             msks=self.msks_val,msks2=self.msks_val2, msks3=self.msks_val3, msks4=self.msks_val4, batch_size=self.config[
-            'batch_size'], transform=self.config['transform_train'],val=True)
+        gen_trn = self.batch_gen_trn(imgs=self.imgs_trn, 
+                                     imgs2=self.imgs_trn2, 
+                                     imgs3=self.imgs_trn3, 
+                                     imgs4=self.imgs_trn4,
+                                     msks=self.msks_trn,
+                                     msks2=self.msks_trn2, 
+                                     msks3=self.msks_trn3, 
+                                     msks4=self.msks_trn4, 
+                                     batch_size=self.config['batch_size'], 
+                                                            transform=self.config['transform_train'],val=False
+                                    )
+        gen_val = self.batch_gen_trn(imgs=self.imgs_val,
+                                     imgs2=self.imgs_val2, 
+                                     imgs3=self.imgs_val3, 
+                                     imgs4=self.imgs_val4,
+                                     msks=self.msks_val, 
+                                     msks2=self.msks_val2, 
+                                     msks3=self.msks_val3, 
+                                     msks4=self.msks_val4, 
+                                     batch_size=self.config['batch_size'], 
+                                                            transform=self.config['transform_train'],val=True)
         csv_logger = CSVLogger('training.log')
         clr_triangular = CyclicLR(mode='triangular')
         clr_triangular._reset(new_base_lr=0.00001, new_max_lr=0.0005)
-        cb = [clr_triangular,EarlyStopping(monitor='val_loss', min_delta=1e-3, patience=300, verbose=1, mode='min'),
-            ModelCheckpoint(self.checkpoint_path + '/weights_loss_val.weights',
-                            monitor='val_loss', save_best_only=True, verbose=1),
-            ModelCheckpoint(self.checkpoint_path + '/weights_loss_trn.weights',
-                            monitor='loss', save_best_only=True, verbose=1)
-        ,csv_logger]
+        cb = [clr_triangular, 
+              EarlyStopping(monitor='val_loss', 
+                            min_delta=1e-3, 
+                            patience=300, 
+                            verbose=1, 
+                            mode='min'
+                           ),
+              ModelCheckpoint(self.checkpoint_path + '/weights_loss_val.weights',
+                              monitor='val_loss', 
+                              save_best_only=True, 
+                              verbose=1
+                             ),
+              ModelCheckpoint(self.checkpoint_path + '/weights_loss_trn.weights',
+                              monitor='loss', 
+                              save_best_only=True, verbose=1
+                             ),
+              csv_logger]
 
         logger.info('Training for %d epochs.' % self.config['nb_epoch'])
         self.net.fit_generator(generator=gen_trn, steps_per_epoch=100, epochs=self.config['nb_epoch'],
@@ -191,7 +222,10 @@ class UNet():
 
         return
 
-    def batch_gen_trn(self, imgs, imgs2, imgs3, imgs4, msks, msks2, msks3, msks4, batch_size, transform=True, rng=np.random,val=False):
+    def batch_gen_trn(self, imgs, imgs2, imgs3, 
+                      imgs4, msks, msks2, msks3, 
+                      msks4, batch_size, transform=True, 
+                      rng=np.random,val=False):
 
         H, W = imgs.shape
         H2, W2 = imgs2.shape
