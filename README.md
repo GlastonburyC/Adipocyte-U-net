@@ -1,6 +1,6 @@
 # Adipocyte-U-net
 
-The Adipocyte U-net is a deep U-net architecture trained to segment Adipocytes from histology imaging slides (both H&E and florescent).
+The Adipocyte U-net is a deep U-net architecture trained to segment Adipocytes from histology imaging slides (both H&E and florescent). 
 
 ![alt text](overview.png)
 
