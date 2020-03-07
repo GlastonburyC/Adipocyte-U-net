@@ -12,7 +12,8 @@ This software was developed using Python3.5. It has a lot of dependencies and *w
 We strongly recommend following these instructions:
 
 1. Download and install [Python 3.5.2](https://www.python.org/downloads/release/python-352/)
-2. Install `virtualenv` and create a virtual environment `virtualenv adipo --python=python3.5`
+2. Install `virtualenv` and create a virtual environment `virtualenv unet --python=python3.5`
+3. source the environment `source unet/bin/activate`
 3. `git clone https://github.com/GlastonburyC/Adipocyte-U-net.git`
 4. `cd Adipocyte-U-net`
 3. Install the requirements `pip3.5 install -r requirements.txt`
