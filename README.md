@@ -5,7 +5,19 @@ The Adipocyte U-net is a deep U-net architecture trained to segment Adipocytes f
 
 ![alt text](overview.png)
 
-### Running the tutorial using Binder
+### Classifying cells with InceptionV3
+
+An example script is included that classifies 30 cells as either containing adipocytes, not_adipocytes or empty tiles.
+
+It can be run like so:
+
+```bash
+python3 cell_classifier.py --out-dir ./ --weight_dir checkpoints/tile_classifier_InceptionV3/tile_adipocyte.weights.h5 --image-path example_class_tiles
+```
+
+This outputs a text file of probabilities of whether the network thinks the image contains adipocytes. After this step, we can keep only adipocyte tiles and train our adipocyte U-net. Once trained (the time consuming step) we can predict areas, like the tutorial below.
+
+### Running the image segmentation tutorial using Binder
 
 We have made this repository work with Binder. By clicking the binder logo above, a docker image will launch on the Binder website and you'll be able to use the tutorial notebook `Tutorial.ipynb` as if it were installed on your own laptop.
 
