@@ -19,6 +19,8 @@ We strongly recommend following these instructions using python 3.5+:
 
 ### Classifying cells with InceptionV3
 
+_if you run the classifier code without using a GPU it will be slow (>30mins) the same goes for segmentation (1min)_
+
 An example script is included that classifies 30 cells as either containing adipocytes, not_adipocytes or empty tiles.
 
 It can be run like so:
