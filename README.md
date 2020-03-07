@@ -1,4 +1,3 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/GlastonburyC/Adipocyte-U-net/master?filepath=Tutorial.ipynb)
 # Adipocyte-U-net
 
 The Adipocyte U-net is a deep U-net architecture trained to segment Adipocytes from histology imaging slides (both H&E and florescent). 
@@ -19,9 +18,10 @@ This outputs a text file of probabilities of whether the network thinks the imag
 
 ### Running the image segmentation tutorial using Binder
 
-We have made this repository work with Binder. By clicking the binder logo above, a docker image will launch on the Binder website and you'll be able to use the tutorial notebook `Tutorial.ipynb` as if it were installed on your own laptop.
+We have made this repository work with Binder. By clicking this binder logo [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/GlastonburyC/Adipocyte-U-net/master?filepath=Tutorial.ipynb)
+, a docker image will launch on the Binder website and you'll be able to use the tutorial notebook `Tutorial.ipynb` as if it were installed on your own laptop.
 
-`Tutorial.ipynb` is a walk through example of how to use adipocyte U-net to perform image segmentation. In the tutorial we predict segmentations and use these predictions to obtain surface area estimates of the cell population present in the image.
+This tutorial, `Tutorial.ipynb`, is a walk through example of how to use adipocyte U-net to perform image segmentation. In the tutorial we predict segmentations and use these predictions to obtain surface area estimates of the cell population present in the image.
 This notebook will work on either a CPU or GPU, but will be many times faster in a GPU environment.
 
 ### Installation instructions
