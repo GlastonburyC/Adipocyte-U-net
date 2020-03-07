@@ -1,4 +1,7 @@
 import os
+import tensorflow as tf
+tf.autograph.set_verbosity(1)
+import tensorflow as tf
 import numpy as np
 import shutil
 import random
@@ -48,6 +51,12 @@ def get_parser():
         required=True,
         help='The path to the images we want to classify',
     )
+    parser.add_argument(
+        '--n_cpu',
+        type=int,
+        required=True,
+        help='Number of threads to use',
+    )
     return parser
 
 
@@ -57,11 +66,11 @@ def main():
     img_width = 299
     img_height = 299
     batch_size = 1
-    nbr_test_samples = len(glob.glob(args.image_path + '*'))
+    nbr_test_samples = len(glob.glob(args.image_path + '/test/*/*'))
 
     print('Number of total patches to classify: {}'.format(nbr_test_samples))
 
-    test_data_dir = os.path.join('example_class_tiles/','test')
+    test_data_dir = os.path.join(args.image_path,'test')
 
     test_datagen = ImageDataGenerator(
             rescale=1./255)
@@ -70,7 +79,6 @@ def main():
     InceptionV3_model = load_model(args.weight_dir)
 
 
-    import time
     nbr_augmentation=1
     random_seed=[]
 
@@ -93,19 +101,19 @@ def main():
         print('Begin to predict for testing data ...')
         if idx == 0:
             predictions = InceptionV3_model.predict_generator(test_generator, 
-                                                              2414950,
+                                                              nbr_test_samples,
                                                               use_multiprocessing=True,
-                                                              workers=40)
+                                                              workers=args.n_cpu)
         else:
             predictions += InceptionV3_model.predict_generator(test_generator, 
-                                                               2414950,
+                                                               nbr_test_samples,
                                                                use_multiprocessing=True, 
-                                                               workers=40)
+                                                               workers=args.n_cpu)
 
 
     predictions /= nbr_augmentation
 
-    print('Begin to write submission file ..')
+    print('Begin to write cell probabilties ..')
     seed_submit=open(os.path.join(args.out_dir, 'seed.csv'), 'w')
 
     for item in random_seed:
@@ -120,11 +128,6 @@ def main():
         f_submit.write('%s,%s\n' % (os.path.basename(image_name), ','.join(pred)))
 
     f_submit.close()
-
-    end = time.time()
-
-    print(end-start)
-
 
 if __name__ == "__main__":
     main()
