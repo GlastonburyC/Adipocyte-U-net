@@ -6,6 +6,12 @@ The Adipocyte U-net is a deep U-net architecture trained to segment Adipocytes f
 
 ![alt text](overview.png)
 
+### Running the tutorial using Binder
+
+We have made this repository work with Binder. By clicking the binder logo above, a docker image will launch on the Binder website and you'll be able to use the tutorial notebook `Tutorial.ipynb` as if it were installed on your own laptop.
+
+`Tutorial.ipynb` is a walk through example of how to use adipocyte U-net to perform image segmentation. In the tutorial we predict segmentations and use these predictions to obtain surface area estimates of the cell population present in the image.
+This notebook will work on either a CPU or GPU, but will be many times faster in a GPU environment.
 
 ### Installation instructions
 
@@ -18,10 +24,6 @@ We strongly recommend following these instructions using python 3.5+:
 5. Install the requirements `pip install -r requirements.txt`
 6. If some installs fail, it maybe the version of OS X you're using, in that case `export MACOSX_DEPLOYMENT_TARGET=10.14` and reinstall the requirements (step 5).
 
-
- ### Example tutorial using Adipocyte U-net on GTEx images:
-Checkout `Tutorial.ipynb` for an example of how to use adipocyte U-net to perform image segmentation. In the tutorial we use these predicted segmentations to obtain surface area estimates of the cell population present in the image.
-This notebook will work on either a CPU or GPU, but will be many times faster in a GPU environment.
  
 All the data to reproduce the manuscript are available below:
 
