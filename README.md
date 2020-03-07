@@ -19,6 +19,7 @@ We strongly recommend following these instructions:
 4. If you're on a mac and this fails due to compiler/clang issues, set `export MACOSX_DEPLOYMENT_TARGET=10.14`
 5. re-run requirements install (if neccessary) and you're good to go.
 
+ ### Example tutorial using Adipocyte U-net on GTEx images:
 Checkout `Tutorial.ipynb` for an example of how to use adipocyte U-net to perform image segmentation. In the tutorial we use these predicted segmentations to obtain surface area estimates of the cell population present in the image.
 This notebook will work on either a CPU or GPU, but will be many times faster in a GPU environment.
  
