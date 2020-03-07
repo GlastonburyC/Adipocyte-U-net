@@ -19,7 +19,7 @@ We strongly recommend following these instructions using python 3.5+:
 
 ### Classifying cells with InceptionV3
 
-_if you run the classifier code without using a GPU it will be slow (>30mins) the same goes for segmentation (1min)_
+_if you run the tutorials without a GPU, it will be slow (but still < 1min)_
 
 An example script is included that classifies 30 cells as either containing adipocytes, not_adipocytes or empty tiles.
 
@@ -28,8 +28,7 @@ It can be run like so:
 ```bash
 python3 cell_classifier.py --out-dir ./ --weight_dir checkpoints/tile_classifier_InceptionV3/tile_adipocyte.weights.h5 --image-path example_class_tiles
 ```
-
-This outputs a text file of probabilities of whether the network thinks the image contains adipocytes. After this step, we can keep only adipocyte tiles and train our adipocyte U-net. Once trained (the time consuming step) we can predict areas, like the tutorial below.
+This outputs a text file of probabilities of whether the network thinks the image contains adipocytes. After this step, we can keep only adipocyte tiles (given some probability threshold) and train our adipocyte U-net. Once trained (the time consuming step) we can predict areas, like the tutorial below.
 
 ### Running the image segmentation tutorial using Binder
 
