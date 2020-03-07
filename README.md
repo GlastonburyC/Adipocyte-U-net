@@ -7,18 +7,15 @@ The Adipocyte U-net is a deep U-net architecture trained to segment Adipocytes f
 
 ### Installation instructions
 
-This software was developed using Python3.5. It has a lot of dependencies and *will not work* on later versions of tensorflow.
+We strongly recommend following these instructions using python 3.5+:
 
-We strongly recommend following these instructions:
-
-1. Download and install [Python 3.5.2](https://www.python.org/downloads/release/python-352/)
-2. Install `virtualenv` and create a virtual environment `virtualenv unet --python=python3.5`
-3. source the environment `source unet/bin/activate`
+1. Install `virtualenv` and create a virtual environment `virtualenv unet`
+2. source the environment `source unet/bin/activate`
 3. `git clone https://github.com/GlastonburyC/Adipocyte-U-net.git`
 4. `cd Adipocyte-U-net`
-3. Install the requirements `pip3.5 install -r requirements.txt`
-4. If you're on a mac and this fails due to compiler/clang issues, set `export MACOSX_DEPLOYMENT_TARGET=10.14`
-5. re-run requirements install (if neccessary) and you're good to go.
+5. Install the requirements `pip install -r requirements.txt`
+6. If some installs fail, it maybe the version of OS X you're using, in that case `export MACOSX_DEPLOYMENT_TARGET=10.14` and reinstall the requirements (step 5).
+
 
  ### Example tutorial using Adipocyte U-net on GTEx images:
 Checkout `Tutorial.ipynb` for an example of how to use adipocyte U-net to perform image segmentation. In the tutorial we use these predicted segmentations to obtain surface area estimates of the cell population present in the image.
