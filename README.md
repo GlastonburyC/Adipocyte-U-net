@@ -7,7 +7,7 @@ The Adipocyte U-net is a deep U-net architecture trained to segment Adipocytes f
 
 ### Installation instructions
 
-We strongly recommend following these instructions:
+We strongly recommend following these instructions using python 3.5+:
 
 1. Install `virtualenv` and create a virtual environment `virtualenv unet`
 2. source the environment `source unet/bin/activate`
