@@ -1,6 +1,6 @@
 jupyterlab==2.0.1
 numpy==1.15.1
-tifffile==0.12
+tifffile==0.13
 scikit-image==0.14.0
 opencv-python==3.4.2.16
 matplotlib==3.0
