@@ -17,6 +17,8 @@ We strongly recommend following these instructions using python 3.5+:
 
 ## Tutorial examples
 
+We have provided some small example tutorials to demonstrate both the classifier (InceptionV3) + Adipocyte U-net in action. It is neccessary to present only a handful of images, as the data we analysed in the paper poses its own engineering challenges (millions of images, several terabytes of data). However, the full data release is included at the bottom of the README, along with all network weights, images and manual annotations.
+
 ### Classifying cells with InceptionV3
 
 _if you run the tutorials without a GPU, it will be slow (but still < 1min)_
@@ -26,9 +28,12 @@ An example script is included that classifies 30 cells as either containing adip
 It can be run like so:
 
 ```bash
-python3 cell_classifier.py --out-dir ./ --weight_dir checkpoints/tile_classifier_InceptionV3/tile_adipocyte.weights.h5 --image-path example_class_tiles
+python3 cell_classifier.py --out-dir ./ \
+                           --weight_dir checkpoints/tile_classifier_InceptionV3/tile_adipocyte.weights.h5 \
+                           --image-path example_class_tiles \
+                           --n_cpu 4 \
 ```
-This outputs a text file of probabilities of whether the network thinks the image contains adipocytes. After this step, we can keep only adipocyte tiles (given some probability threshold) and train our adipocyte U-net. Once trained (the time consuming step) we can predict areas, like the tutorial below.
+This outputs a text file of probabilities of whether the network thinks the image contains adipocytes. After this step, we can keep only adipocyte tiles (given some probability threshold) and train our adipocyte U-net. Our classifier deduces 10/30 images contain adipocytes(P>0.90). We use these images downstream to perform segmentation and cell area estimate in the next tutorial.
 
 ### Running the image segmentation tutorial using Binder
 
@@ -37,7 +42,6 @@ We have made this repository work with Binder. By clicking this binder logo [![B
 
 This tutorial, `Tutorial.ipynb`, is a walk through example of how to use adipocyte U-net to perform image segmentation. In the tutorial we predict segmentations and use these predictions to obtain surface area estimates of the cell population present in the image.
 This notebook will work on either a CPU or GPU, but will be many times faster in a GPU environment.
-
 
 All the data to reproduce the manuscript are available below:
 
