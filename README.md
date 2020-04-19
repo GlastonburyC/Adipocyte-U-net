@@ -25,7 +25,9 @@ _if you run the tutorials without a GPU, it will be slow (but still < 1min)_
 
 An example script is included that classifies 30 cells as either containing adipocytes, not_adipocytes or empty tiles.
 
-It can be run like so:
+First download the neccessary files.
+
+It can be run like so - make sure you have the network weights downloaded, they can be found here checkpoints/tile_classifier_InceptionV3/url_to_tiles:
 
 ```bash
 python3 cell_classifier.py --out-dir ./ \
