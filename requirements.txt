@@ -1,4 +1,4 @@
-jupyterlab==2.0.1
+jupyterlab==2.2.10
 numpy==1.16
 tifffile==0.14
 scikit-image==0.14.2
